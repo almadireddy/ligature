@@ -17,6 +17,11 @@ const Home = () => (
         <a className='action-button' href='/connect'>Find out how we can make yours -></a>
       </div>
     </div>
+    <div className='row'>
+      <div className='col text-center'>
+        <a href='/projects'>See projects we've done for other clients</a>
+      </div>
+    </div>
   </Layout>
 )
 

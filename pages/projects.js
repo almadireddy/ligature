@@ -28,7 +28,7 @@ const Projects = () => (
         <div className='col'>
           <h2>{project.name}</h2>
           <p>{project.description}</p>
-          <a href={project.link} className='action-button'>Access</a>
+          <a href={project.link} className='action-button'>View Live</a>
         </div>
       </div>
     ))}
