@@ -1,7 +1,7 @@
 import React from 'react'
-import Link from 'next/link'
 import Layout from '../components/layout';
 import '../scss/main.scss';
+import CallToAction from '../components/CallToAction';
 
 const Home = () => (
   <Layout title='Ligature Design'>
@@ -14,7 +14,7 @@ const Home = () => (
     </div>
     <div className='row'>
       <div className='col text-center'>
-        <a className='action-button' href='/connect'>Find out how we can make yours -></a>
+        <CallToAction href='/connect'>Find out how we can make yours -></CallToAction>
       </div>
     </div>
     <div className='row'>
