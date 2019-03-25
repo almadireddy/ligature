@@ -63,7 +63,7 @@ export default class Connect extends Component {
   async submitHandler(e) {
     e.preventDefault();
     
-    if (!(this.state.email == '' || this.state.name == '' || this.state.message == '' || this.state.emailInvalid || this.state.organization == "")) {
+    if (!(this.state.email == '' || this.state.recaptchaScore == '' || this.state.name == '' || this.state.message == '' || this.state.emailInvalid || this.state.organization == "")) {
       this.setState({ displayEmptyMessage: false });
       let response = await fetch('https://mailer.almadireddy.now.sh', {
         method: 'POST',
@@ -109,16 +109,31 @@ export default class Connect extends Component {
         </div>
         <div className='row'>
           <div className='col text-center'>
-            <h2>Connect with us at contact@ligature.design</h2>
-            <p>We'd love to get started making your next idea a reality!</p>
-            <form ref={this.recaptchaRef} onSubmit={this.submitHandler}>
+            <h2>Connect with Ligature!</h2>
+            <p>We'd love to get started turning your next great idea into reality!</p>
+              {this.state.displaySuccessMessage &&
+                <div className='success-message'>
+                  <h3 className='text-success'>Thanks for reaching out! 🎉</h3>
+                  <p>We will get back to you at the email you provided.</p>
+                </div>
+              }
+              {this.state.displayErrorMessage &&
+                <div className='error-message'>
+                  <h3 className='text-danger'>Something went wrong 😔</h3>
+                  <p>Try submitting the form again.</p>
+                </div>
+              }
+            <form className='contact-form' ref={this.recaptchaRef} onSubmit={this.submitHandler}>
               <FormGroup>
                 <label htmlFor='nameBox'>Your Name</label>
                 <input id='nameBox' onChange={this.onNameChange}></input>
               </FormGroup>
               <FormGroup>
                 <label htmlFor='emailBox'>Your Email</label>
-                <input id='emailBox' onChange={this.onEmailChange}></input>
+                <input id='emailBox' onBlur={this.displayEmailInvalid} onChange={this.onEmailChange}></input>
+                {this.state.displayInvalidMessage &&
+                  <p className='invalid-email error-message'>Make sure you use a valid email!</p>
+                }
               </FormGroup>
               <FormGroup>
                 <label htmlFor='orgbox'>Company Name</label>
@@ -126,15 +141,18 @@ export default class Connect extends Component {
               </FormGroup>
               <FormGroup>
                 <label htmlFor='messageBox'>Message</label>
-                <input id='messageBox' onChange={this.onMessageChange}></input>
+                <textarea rows='8' id='messageBox' onChange={this.onMessageChange}></textarea>
               </FormGroup>
-
-              <ReCaptcha
-                size='normal'   
-                sitekey="6Lcvd5kUAAAAAPX2tL26dedSCt8pG-99r_U-B6bs"
-                onChange={this.onRecaptchaChange}
-              />
-              <CallToAction className='submit-button'>Submit</CallToAction>
+              <FormGroup>
+                <ReCaptcha
+                  size='normal'   
+                  sitekey="6Lcvd5kUAAAAAPX2tL26dedSCt8pG-99r_U-B6bs"
+                  onChange={this.onRecaptchaChange}
+                />
+              </FormGroup>
+              <FormGroup>
+                <CallToAction className='submit-button'>Submit</CallToAction>
+              </FormGroup>
             </form>
           </div>
         </div>

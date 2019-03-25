@@ -18,6 +18,11 @@ nav {
   }
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 a {
   color: #067df7;
   text-decoration: none;
@@ -31,8 +36,19 @@ a {
 
 .hero {
   width: 100%;
+  padding-top: 50px;
   color: #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: center
 }
+
+.hero-logo {
+  max-width: 500px;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
 .title {
   margin: 0;
   width: 100%;
@@ -44,6 +60,7 @@ a {
 
 .description {
   font-size: 18px;
+  margin-bottom: 10px;
 }
 .title,
 .description {
@@ -71,10 +88,25 @@ a {
   font-size: 16px;
   transition: all .2s ease;
   display: inline-block;
+  cursor: pointer;
+
   &:hover {
     background: #2b2b2b;
     color: #f8f8f8;
+    box-shadow: 0 3px 0 0 #067df7;
   }
+}
+
+.text-danger {
+  color: #bd2222
+}
+
+.text-success {
+  color: #3eb33e
+}
+
+.success-message, .error-message {
+  margin: 50px 0;
 }
 
 .project {
@@ -86,6 +118,38 @@ a {
     p {
       font-size: 18px;
       margin-bottom: 25px;
+    }
+  }
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+
+  .invalid-email {
+    margin: 5px 2px;
+  }
+
+  .form-group {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    label {
+      margin-bottom: 5px;
+    }
+    input, textarea {
+      border: 2px solid #2b2b2b;
+      padding: 3px 10px;
+      display: inline-block;
+      min-width: 300px;
+      font-size: 16px;
+      line-height: 25px;
     }
   }
 }
