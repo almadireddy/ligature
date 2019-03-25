@@ -1,1 +1,8 @@
-{ "version": 2, "builds": [{ "src": "package.json", "use": "@now/static-build" }] }
+{ 
+  "version": 2, 
+  "builds": [{ "src": "package.json", "use": "@now/static-build" }],
+  "alias": [
+    "ligature.design",
+    "www.ligature.design"
+  ] 
+}
