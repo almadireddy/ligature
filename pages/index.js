@@ -6,7 +6,9 @@ import CallToAction from '../components/CallToAction';
 const Home = () => (
   <Layout title='Ligature Design'>
     <div className="hero">
-      <img className='hero-logo' src='../static/logo_full.png'></img>
+      <div className='hero-logo'>
+        <img src='../static/logo_full.png'></img>
+      </div>
       <p className="description">
         Ligature Design makes websites that get the job done.
       </p>
